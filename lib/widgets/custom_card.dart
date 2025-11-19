@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class CustomCard extends StatelessWidget {
-  // final String imageUrl;
+  final String imageUrl;
   final String title;
   final String subtitle;
   final VoidCallback? onFavorite;
@@ -9,7 +9,7 @@ class CustomCard extends StatelessWidget {
 
   const CustomCard({
     super.key,
-    // required this.imageUrl,
+    required this.imageUrl,
     required this.title,
     required this.subtitle,
     this.onFavorite,
@@ -48,12 +48,12 @@ class CustomCard extends StatelessWidget {
                 width: 3,
               ),
             ),
-            // child: ClipOval(
-            //   child: Image.network(
-            //     imageUrl,
-            //     fit: BoxFit.cover,
-            //   ),
-            // ),
+            child: ClipOval(
+              child: Image.network(
+                imageUrl,
+                fit: BoxFit.cover,
+              ),
+            ),
           ),
 
           const SizedBox(width: 14),

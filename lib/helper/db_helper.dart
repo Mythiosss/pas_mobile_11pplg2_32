@@ -20,7 +20,7 @@ class FavoriteDB {
 
     return await openDatabase(
       path,
-      version: 1,
+      version: 2,
       onCreate: (db, version) async {
         await db.execute('''
           CREATE TABLE favorites(
@@ -32,6 +32,21 @@ class FavoriteDB {
           )
         ''');
       },
+      onUpgrade: (db, oldVersion, newVersion) async {
+        if (oldVersion < 2) {
+          await db.execute('ALTER TABLE favorites ADD COLUMN language TEXT');
+          await db.execute('DROP TABLE IF EXISTS favorites');
+          await db.execute('''
+            CREATE TABLE favorites(
+              id INTEGER PRIMARY KEY,
+              name TEXT,
+              language TEXT,
+              genres TEXT,
+              image TEXT
+            )
+          ''');
+        }
+      },
     );
   }
 
@@ -41,9 +56,9 @@ class FavoriteDB {
       "id": item["id"],
       "name": item["name"],
       "language": item["language"],
-      "genres": item["genres"],
+      "genres": (item["genres"] is List) ? (item["genres"] as List).join(", ") : (item["genres"]?.toString() ?? "-"),
       "image": item["image"],
-    });
+    }, conflictAlgorithm: ConflictAlgorithm.replace);
   }
 
   Future<List<Map<String, dynamic>>> getFavorites() async {

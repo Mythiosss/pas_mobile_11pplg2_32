@@ -1,0 +1,58 @@
+import 'package:flutter/material.dart';
+
+class AppColors {
+  static const Color primary = Color(0xFF6C63FF);
+  static const Color primaryLight = Color(0xFF9D97FF);
+  static const Color primaryDark = Color(0xFF4B44CC);
+
+  static const Color secondary = Color(0xFFFF6584);
+  static const Color secondaryLight = Color(0xFFFF94A8);
+  static const Color secondaryDark = Color(0xFFCC3D5E);
+
+  static const Color accent = Color(0xFFFFD93D);
+  static const Color accentLight = Color(0xFFFFE66D);
+  static const Color accentDark = Color(0xFFCCAD31);
+
+  static const Color background = Color(0xFFF5F7FA);
+  static const Color backgroundDark = Color(0xFF1A1B2E);
+  static const Color surface = Color(0xFFFFFFFF);
+  static const Color surfaceDark = Color(0xFF2D2E43);
+
+  static const Color textPrimary = Color(0xFF2D3142);
+  static const Color textSecondary = Color(0xFF6B7280);
+  static const Color textLight = Color(0xFF9CA3AF);
+  static const Color textWhite = Color(0xFFFFFFFF);
+
+  static const Color success = Color(0xFF10B981);
+  static const Color error = Color(0xFFEF4444);
+  static const Color warning = Color(0xFFF59E0B);
+  static const Color info = Color(0xFF3B82F6);
+
+  static const LinearGradient primaryGradient = LinearGradient(
+    colors: [primary, primaryLight],
+    begin: Alignment.topLeft,
+    end: Alignment.bottomRight,
+  );
+
+  static const LinearGradient accentGradient = LinearGradient(
+    colors: [secondary, accent],
+    begin: Alignment.topLeft,
+    end: Alignment.bottomRight,
+  );
+
+  static List<BoxShadow> cardShadow = [
+    BoxShadow(
+      color: primary.withValues(alpha: .4),
+      blurRadius: 20,
+      offset: const Offset(0, 8),
+    ),
+  ];
+
+  static List<BoxShadow> buttonShadow = [
+    BoxShadow(
+      color: primary.withValues(alpha: .3),
+      blurRadius: 12,
+      offset: const Offset(0, 4),
+    ),
+  ];
+}
